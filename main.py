@@ -29,7 +29,7 @@ def main():
             split_row = row[0].split(',')
             index = int(split_row[-1])
             samples[index] += 1
-            training_data.append([int(string) for string in split_row[:-1]])
+            training_data.append([int(string) for string in split_row[:]])
 
 
     # print(samples)
@@ -38,7 +38,6 @@ def main():
     vals = samples.values()
     fig, ax = plt.subplots()
     ax.bar(symbs, vals)
-
     plt.show()
 
 
