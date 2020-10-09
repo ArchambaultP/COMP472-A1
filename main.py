@@ -4,6 +4,7 @@ import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
 import baseDT
+import gnb
 
 def main():
     path = Path('./dataset')
@@ -63,8 +64,8 @@ def main():
     ax.bar(symbs, vals)
     # plt.show()
 
-    baseDT.train(X_train, Y_train)
-
+    # baseDT.train(X_train, Y_train)
+    print(gnb.gaussianNB(X_train, Y_train, X_test, Y_test))
 
     
 
