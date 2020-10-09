@@ -12,6 +12,11 @@ def main():
     samples = {}
     X_train = []
     Y_train = []
+    X_val = []
+    Y_val = []
+    X_test = []
+    Y_test = []
+
 
     with open(path / 'info_1.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
@@ -34,7 +39,23 @@ def main():
             X_train.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_train.append(index)
 
-    # print(samples)
+    with open(path / 'val_1.csv') as file:
+        reader = csv.reader(file, delimiter='\n') 
+        for row in reader:
+            split_row = row[0].split(',')
+            index = int(split_row[-1])
+            samples[index] += 1
+            X_val.append([int(string) for string in split_row[:-1]]) # training data, label in last position
+            Y_val.append(index)
+    
+    with open(path / 'test_with_label_1.csv') as file:
+        reader = csv.reader(file, delimiter='\n') 
+        for row in reader:
+            split_row = row[0].split(',')
+            index = int(split_row[-1])
+            samples[index] += 1
+            X_test.append([int(string) for string in split_row[:-1]]) # training data, label in last position
+            Y_test.append(index)
 
     symbs = symbol_dict.values()
     vals = samples.values()
