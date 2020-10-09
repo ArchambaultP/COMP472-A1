@@ -3,13 +3,15 @@
 import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
+import baseDT
 
 def main():
     path = Path('./dataset')
 
     symbol_dict = {}
     samples = {}
-    training_data = []
+    X_train = []
+    Y_train = []
 
     with open(path / 'info_1.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
@@ -29,8 +31,8 @@ def main():
             split_row = row[0].split(',')
             index = int(split_row[-1])
             samples[index] += 1
-            training_data.append([int(string) for string in split_row[:]])
-
+            X_train.append([int(string) for string in split_row[:-1]]) # training data, label in last position
+            Y_train.append(index)
 
     # print(samples)
 
@@ -38,7 +40,12 @@ def main():
     vals = samples.values()
     fig, ax = plt.subplots()
     ax.bar(symbs, vals)
-    plt.show()
+    # plt.show()
+
+    baseDT.train(X_train, Y_train)
+
+
+    
 
 
 if __name__ == '__main__':
