@@ -65,7 +65,7 @@ def main():
     # plt.show()
 
     # baseDT.train(X_train, Y_train)
-    print(gnb.gaussianNB(X_train, Y_train, X_test, Y_test))
+    print(gnb.gaussianNB(X_train, Y_train, X_test))
 
     
 
