@@ -5,6 +5,8 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import baseDT
 import gnb
+import bestMLP
+import outFile
 
 def main():
     path = Path('./dataset')
@@ -65,8 +67,10 @@ def main():
     # plt.show()
 
     # baseDT.train(X_train, Y_train)
-    print(gnb.gaussianNB(X_train, Y_train, X_test))
-
+    Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
+    
+    # bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
+    outFile.createCSV(Y_gnb, Y_test, "wtv", "wtv")
     
 
 
