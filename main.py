@@ -70,7 +70,7 @@ def main():
     Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
     
     # bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
-    outFile.createCSV(Y_gnb, Y_test, "wtv", "wtv")
+    outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
     
 
 
