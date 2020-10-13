@@ -32,7 +32,6 @@ def bestDT(X_train, Y_train, X_test, Y_test, labels):
 
 	models = []
 	keys = []
-	print([x / 100.0 for x in range(0, 21, 5)])
 	for i in [x / 200.0 for x in range(0, 51, 5)]:
 		for min_sample in range(2, 6):
 			base = base_model(X_train, Y_train, X_test, criterion="entropy", min_samples=min_sample)
