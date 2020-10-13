@@ -4,6 +4,7 @@ import csv
 from pathlib import Path
 import matplotlib.pyplot as plt
 import baseDT
+import bestDT
 import gnb
 import bestMLP
 import outFile
@@ -62,16 +63,17 @@ def main():
 
     symbs = symbol_dict.values()
     vals = samples.values()
-    fig, ax = plt.subplots()
-    ax.bar(symbs, vals)
+    # fig, ax = plt.subplots()
+    # ax.bar(symbs, vals)
     # plt.show()
 
     # baseDT.train(X_train, Y_train)
-    Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
+    # Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
     
     # bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
-    outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
-    
+    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
+
+    bestDT_pred = bestDT.bestDT(X_train, Y_train, X_val, Y_val, list(symbol_dict.keys()))
 
 
 if __name__ == '__main__':

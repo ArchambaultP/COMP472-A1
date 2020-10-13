@@ -1,6 +1,7 @@
 from sklearn import tree
+from sklearn.metrics import f1_score
 
-def bestDT(X_train, Y_train, X_test):
+def bestDT(X_train, Y_train, X_test, Y_test, labels):
 
 	def base_model(X_train, Y_train, X_test, criterion="gini", depth=None, min_samples=2, impurity=0.0, balanced=None):
 		d = 10 if depth == 10 else None
@@ -8,21 +9,32 @@ def bestDT(X_train, Y_train, X_test):
 		model = clf.fit(X_train, Y_train)
 		return model
 
-
 	def predictions(models, keys):
-		
 		out = {}
 		for model, key in zip(models, keys):
 			pred = model.predict(X_test)
-			out[key] = pred
-
+			out[key] = (model, pred)
 		return out
+
+	def rank_models(Y_true, preds, labels):
+		rankings = {}
+
+		for key in preds.keys():
+			model = preds[key][0]
+			pred = preds[key][1]
+			rankings[key] = f1_score(Y_true, pred, average="macro", labels=labels)
+
+		rankings = {k: v for k, v in sorted(rankings.items(), key=lambda item: item[1], reverse=True)}
+		for el in list(rankings.items())[:5]:
+			print("Ranked models:")
+			print(el)
+
 
 	models = []
 	keys = []
-
-	for i in [x / 100.0 for x in range(0, 60, 5)]:
-		for min_sample in range(2, 21):
+	print([x / 100.0 for x in range(0, 21, 5)])
+	for i in [x / 200.0 for x in range(0, 51, 5)]:
+		for min_sample in range(2, 6):
 			base = base_model(X_train, Y_train, X_test, criterion="entropy", min_samples=min_sample)
 			depth10_ent = base_model(X_train, Y_train, X_test, criterion="entropy", depth=10, min_samples=min_sample)
 			bal_base = base_model(X_train, Y_train, X_test, criterion="entropy", balanced="balanced", min_samples=min_sample)
@@ -38,8 +50,8 @@ def bestDT(X_train, Y_train, X_test):
 					f"bal_depth10_ent-{i}-{min_sample}", f"gini-{i}-{min_sample}", f"depth10_gini-{i}-{min_sample}", 
 					f"bal_gini-{i}-{min_sample}", f"bal_depth10_gini-{i}-{min_sample}"]
 
-	# models = [base, gini, depth10_ent, depth10_gini]
-
 	pred = predictions(models, keys)
+
+	rank_models(Y_test, pred, labels)
 
 	return pred
