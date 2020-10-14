@@ -1,9 +1,9 @@
-import sklearn.linear_model.Perceptron
+import skearn.neural_network
 
-def perceptron(X_train, Y_train, X_test):
+def baseMLP(X_train, Y_train, X_test):
 
     def model():
-        model = sklearn.linear_model.Perceptron().fit(X_train, Y_train)
+        model = sklearn.neural_network.MLPClassifier(hidden_layer_sizes=(100, 1), activation='logistic', solver='sgd')
         return model
 
     def predictions(model):
@@ -13,5 +13,3 @@ def perceptron(X_train, Y_train, X_test):
     model = model(X_train, Y_train)
     pred = predictions(model)
     return pred
-
-
