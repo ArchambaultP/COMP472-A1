@@ -7,6 +7,8 @@ import baseDT
 import bestDT
 import gnb
 import bestMLP
+import baseMLP
+import perceptron
 import outFile
 
 def main():
@@ -72,6 +74,13 @@ def main():
     
     # bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
     # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
+
+    pcp = perceptron.perceptron(X_train,Y_train,X_test)
+    outFile.createCSV(pcp, Y_test, symbol_dict, "MLP_results")
+
+    MLP = baseMLP.baseMLP(X_train,Y_train,X_test)
+    outFile.createCSV(MLP,Y_test,symbol_dict,"MLP_results")
+
 
     bestDT_pred = bestDT.bestDT(X_train, Y_train, X_val, Y_val, list(symbol_dict.keys()))
 

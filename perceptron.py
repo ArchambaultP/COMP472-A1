@@ -1,8 +1,8 @@
-import sklearn.linear_model.Perceptron
+import sklearn.linear_model
 
 def perceptron(X_train, Y_train, X_test):
 
-    def model():
+    def model(X_train, Y_train):
         model = sklearn.linear_model.Perceptron().fit(X_train, Y_train)
         return model
 
