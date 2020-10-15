@@ -82,11 +82,11 @@ def main():
     pcp = perceptron.perceptron(X_train,Y_train,X_test)
     outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS1")
 
-    MLP = baseMLP.baseMLP(X_train,Y_train,X_test)
-    outFile.createCSV(MLP,Y_test,symbol_dict,"BASE-MLP-DS1")
+    base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
+    outFile.createCSV(base_mlp,Y_test,symbol_dict,"BASE-MLP-DS1")
 
-    bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
-    outFile.createCSV(Y_gnb, Y_test, symbol_dict, "BEST_MLP-DS1")
+    best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
+    outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS1")
 
     bestDT_pred = bestDT.bestDT(X_train, Y_train, X_val, Y_val, list(symbol_dict.keys()))
 
