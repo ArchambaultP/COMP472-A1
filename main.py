@@ -70,16 +70,23 @@ def main():
     # plt.show()
 
     # baseDT.train(X_train, Y_train)
-    # Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
-    
-    # bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
-    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
+    baseDT = baseDT(X_train, Y_train, X_test)
+    outFile.createCSV(baseDT, Y_test, symbol_dict, "BASE-DT-DS1")
+
+    bestDT = bestDT(X_train, Y_train, X_test)
+    outFile.createCSV(bestDT, Y_test, symbol_dict, "BEST-DT-DS1")
+
+    Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
+    outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS1")
 
     pcp = perceptron.perceptron(X_train,Y_train,X_test)
-    outFile.createCSV(pcp, Y_test, symbol_dict, "pcp_results")
+    outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS1")
 
     MLP = baseMLP.baseMLP(X_train,Y_train,X_test)
-    outFile.createCSV(MLP,Y_test,symbol_dict,"MLP_results")
+    outFile.createCSV(MLP,Y_test,symbol_dict,"BASE-MLP-DS1")
+
+    bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
+    outFile.createCSV(Y_gnb, Y_test, symbol_dict, "BEST_MLP-DS1")
 
 
     bestDT_pred = bestDT.bestDT(X_train, Y_train, X_val, Y_val, list(symbol_dict.keys()))
