@@ -76,7 +76,7 @@ def main():
     # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "wtv")
 
     pcp = perceptron.perceptron(X_train,Y_train,X_test)
-    outFile.createCSV(pcp, Y_test, symbol_dict, "MLP_results")
+    outFile.createCSV(pcp, Y_test, symbol_dict, "pcp_results")
 
     MLP = baseMLP.baseMLP(X_train,Y_train,X_test)
     outFile.createCSV(MLP,Y_test,symbol_dict,"MLP_results")
