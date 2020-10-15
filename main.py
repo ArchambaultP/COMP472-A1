@@ -70,11 +70,11 @@ def main():
     # plt.show()
 
     # baseDT.train(X_train, Y_train)
-    baseDT = baseDT(X_train, Y_train, X_test)
-    outFile.createCSV(baseDT, Y_test, symbol_dict, "BASE-DT-DS1")
+    baseD = baseDT.baseDT(X_train, Y_train, X_test)
+    outFile.createCSV(baseD, Y_test, symbol_dict, "BASE-DT-DS1")
 
-    bestDT = bestDT(X_train, Y_train, X_test)
-    outFile.createCSV(bestDT, Y_test, symbol_dict, "BEST-DT-DS1")
+    dt = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
+    outFile.createCSV(dt, Y_test, symbol_dict, "BEST-DT-DS1")
 
     Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
     outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS1")
@@ -85,9 +85,8 @@ def main():
     MLP = baseMLP.baseMLP(X_train,Y_train,X_test)
     outFile.createCSV(MLP,Y_test,symbol_dict,"BASE-MLP-DS1")
 
-    bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test, Y_test)
+    bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
     outFile.createCSV(Y_gnb, Y_test, symbol_dict, "BEST_MLP-DS1")
-
 
     bestDT_pred = bestDT.bestDT(X_train, Y_train, X_val, Y_val, list(symbol_dict.keys()))
 
