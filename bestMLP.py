@@ -29,9 +29,10 @@ def bestMLP(X_train, Y_train, X_val, Y_val, X_test):
 		best = 0
 		bestparams = [] 
 		parameters = {
-    			'hidden_layer_sizes': [(30,50,), (10,10,10,)],
-    			'activation': ['tanh', 'relu', 'logistic', 'identity'],
-    			'solver': ['sgd', 'adam'],
+    			'hidden_layer_sizes': [(128, 32, 16), (30,50,), (10,10,10,)],
+    			# 'hidden_layer_sizes': [(128, )],
+    			'activation': ['relu'],
+    			'solver': ['adam'],
     			}
 		for x in parameters['hidden_layer_sizes']:
 			for y in parameters['activation']:

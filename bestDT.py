@@ -60,5 +60,6 @@ def bestDT(X_train, Y_train, X_test, Y_test, labels):
     pred = predictions(models, keys)
 
     best_models = rank_models(Y_test, pred, labels)
+    print(type(pred[list(best_models.items())[0][0]])[1])
 
     return pred[list(best_models.items())[0][0]][1]
