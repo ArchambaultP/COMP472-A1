@@ -37,7 +37,7 @@ def main():
     
     # print(symbol_dict)
 
-    with open(path / f'train_ {dataset_index}.csv') as file:
+    with open(path / f'train_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -70,24 +70,23 @@ def main():
     ax.bar(symbs, vals)
     plt.show()
 
-    # baseD = baseDT.baseDT(X_train, Y_train, X_test, Y_test)
-    # outFile.createCSV(baseD, Y_test, symbol_dict, f"BASE-DT-DS{dataset_index}")
+    baseD = baseDT.baseDT(X_train, Y_train, X_test, Y_test)
+    outFile.createCSV(baseD, Y_test, symbol_dict, f"BASE-DT-DS{dataset_index}")
 
-    # bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
-    # outFile.createCSV(bestDT_pred, Y_test, symbol_dict, "BEST-DT-DS{dataset_index}")
+    bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
+    outFile.createCSV(bestDT_pred, Y_test, symbol_dict, f"BEST-DT-DS{dataset_index}")
 
-    # Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
-    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS{dataset_index}")
+    Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
+    outFile.createCSV(Y_gnb, Y_test, symbol_dict, f"GNB-DS{dataset_index}")
 
-    # pcp = perceptron.perceptron(X_train,Y_train,X_test)
-    # outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS{dataset_index}")
+    pcp = perceptron.perceptron(X_train,Y_train,X_test)
+    outFile.createCSV(pcp, Y_test, symbol_dict, f"PER-DS{dataset_index}")
 
-    # base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
-    # outFile.createCSV(base_mlp,Y_test,symbol_dict,"BASE-MLP-DS{dataset_index}")
+    base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
+    outFile.createCSV(base_mlp,Y_test,symbol_dict,f"BASE-MLP-DS{dataset_index}")
 
-    # best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
-    # outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS{dataset_index}")
-
+    best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
+    outFile.createCSV(best_mlp, Y_test, symbol_dict, f"BEST_MLP-DS{dataset_index}")
 
 if __name__ == '__main__':
     main()
