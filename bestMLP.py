@@ -46,9 +46,12 @@ def bestMLP(X_train, Y_train, X_val, Y_val, X_test):
 						bestparams = [x,y,z]
 		return bestparams
 	
-	#using the best params for the output of this model
-	return predictions(model((30,50), 'tanh', 'adam'), X_test)
+	# #using the best params for the output of this model DS1
+	# return predictions(model((30,50), 'tanh', 'adam'), X_test)
 
+	#using the best params for the output of this model DS2
+	return predictions(model((50,30), 'logistic', 'adam'), X_test)
+	
 
 #here are my results for looking for the best parameters 
 
@@ -91,4 +94,3 @@ def bestMLP(X_train, Y_train, X_val, Y_val, X_test):
 (10, 10, 10) identity adam
 0.6739005597071898
 '''
-
