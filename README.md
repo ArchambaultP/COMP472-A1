@@ -1,4 +1,4 @@
-#COMP472 A1 README File
+# COMP472 A1 README File
 
 Our project contains 8 files. 6 of which are the classes for the ML models. 
 The other two files are the main and outFile. 
