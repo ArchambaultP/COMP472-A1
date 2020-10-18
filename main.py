@@ -23,8 +23,9 @@ def main():
     X_test = []
     Y_test = []
 
+    dataset_index = 1;
 
-    with open(path / 'info_1.csv') as file:
+    with open(path / f'info_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             try:
@@ -36,7 +37,7 @@ def main():
     
     # print(symbol_dict)
 
-    with open(path / 'train_1.csv') as file:
+    with open(path / f'train_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -45,7 +46,7 @@ def main():
             X_train.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_train.append(index)
 
-    with open(path / 'val_1.csv') as file:
+    with open(path / f'val_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -54,7 +55,7 @@ def main():
             X_val.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_val.append(index)
     
-    with open(path / 'test_with_label_1.csv') as file:
+    with open(path / f'test_with_label_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -63,32 +64,29 @@ def main():
             X_test.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_test.append(index)
 
-    symbs = symbol_dict.values()
-    vals = samples.values()
-    fig, ax = plt.subplots()
-    ax.bar(symbs, vals)
-    plt.show()
+    #symbs = symbol_dict.values()
+    #vals = samples.values()
+    #fig, ax = plt.subplots()
+    #ax.bar(symbs, vals)
+    #plt.show()
 
-    # baseD = baseDT.baseDT(X_train, Y_train, X_test, Y_test)
-    # outFile.createCSV(baseD, Y_test, symbol_dict, "BASE-DT-DS1")
-
-    # dt = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
-    # outFile.createCSV(dt, Y_test, symbol_dict, "BEST-DT-DS1")
-
-    # Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
-    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS1")
-
-    # pcp = perceptron.perceptron(X_train,Y_train,X_test)
-    # outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS1")
-
-    # base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
-    # outFile.createCSV(base_mlp,Y_test,symbol_dict,"BASE-MLP-DS1")
-
-    # best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
-    # outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS1")
+    baseD = baseDT.baseDT(X_train, Y_train, X_test, Y_test)
+    #outFile.createCSV(baseD, Y_test, symbol_dict, f"BASE-DT-DS{dataset_index}.csv")
 
     bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
+    #outFile.createCSV(bestDT_pred, Y_test, symbol_dict, f"BEST-DT-DS{dataset_index}.csv")
 
+    Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
+    #outFile.createCSV(Y_gnb, Y_test, symbol_dict, f"GNB-DS{dataset_index}.csv")
+
+    pcp = perceptron.perceptron(X_train,Y_train,X_test)
+    #outFile.createCSV(pcp, Y_test, symbol_dict, f"PER-DS{dataset_index}.csv")
+
+    base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
+    #outFile.createCSV(base_mlp,Y_test,symbol_dict,f"BASE-MLP-DS{dataset_index}.csv")
+
+    best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
+    #outFile.createCSV(best_mlp, Y_test, symbol_dict, f"BEST_MLP-DS{dataset_index}.csv")
 
 if __name__ == '__main__':
     main()
