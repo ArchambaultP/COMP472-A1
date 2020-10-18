@@ -23,8 +23,9 @@ def main():
     X_test = []
     Y_test = []
 
+    dataset_index = 1;
 
-    with open(path / 'info_1.csv') as file:
+    with open(path / f'info_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             try:
@@ -36,7 +37,7 @@ def main():
     
     # print(symbol_dict)
 
-    with open(path / 'train_1.csv') as file:
+    with open(path / f'train_ {dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -45,7 +46,7 @@ def main():
             X_train.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_train.append(index)
 
-    with open(path / 'val_1.csv') as file:
+    with open(path / f'val_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -54,7 +55,7 @@ def main():
             X_val.append([int(string) for string in split_row[:-1]]) # training data, label in last position
             Y_val.append(index)
     
-    with open(path / 'test_with_label_1.csv') as file:
+    with open(path / f'test_with_label_{dataset_index}.csv') as file:
         reader = csv.reader(file, delimiter='\n') 
         for row in reader:
             split_row = row[0].split(',')
@@ -87,8 +88,8 @@ def main():
     # best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
     # outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS1")
 
-    bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
-
+    #bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
+    
 
 if __name__ == '__main__':
     main()
