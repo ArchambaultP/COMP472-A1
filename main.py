@@ -71,25 +71,23 @@ def main():
     plt.show()
 
     # baseD = baseDT.baseDT(X_train, Y_train, X_test, Y_test)
-    # outFile.createCSV(baseD, Y_test, symbol_dict, "BASE-DT-DS1")
+    # outFile.createCSV(baseD, Y_test, symbol_dict, f"BASE-DT-DS{dataset_index}")
 
-    # dt = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
-    # outFile.createCSV(dt, Y_test, symbol_dict, "BEST-DT-DS1")
+    # bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
+    # outFile.createCSV(bestDT_pred, Y_test, symbol_dict, "BEST-DT-DS{dataset_index}")
 
     # Y_gnb = gnb.gaussianNB(X_train, Y_train, X_test)
-    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS1")
+    # outFile.createCSV(Y_gnb, Y_test, symbol_dict, "GNB-DS{dataset_index}")
 
     # pcp = perceptron.perceptron(X_train,Y_train,X_test)
-    # outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS1")
+    # outFile.createCSV(pcp, Y_test, symbol_dict, "PER-DS{dataset_index}")
 
     # base_mlp = baseMLP.baseMLP(X_train,Y_train,X_test)
-    # outFile.createCSV(base_mlp,Y_test,symbol_dict,"BASE-MLP-DS1")
+    # outFile.createCSV(base_mlp,Y_test,symbol_dict,"BASE-MLP-DS{dataset_index}")
 
     # best_mlp = bestMLP.bestMLP(X_train, Y_train, X_val, Y_val, X_test)
-    # outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS1")
+    # outFile.createCSV(best_mlp, Y_test, symbol_dict, "BEST_MLP-DS{dataset_index}")
 
-    #bestDT_pred = bestDT.bestDT(X_train, Y_train, X_test, Y_test, list(symbol_dict.keys()))
-    
 
 if __name__ == '__main__':
     main()
