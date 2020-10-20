@@ -1,9 +1,10 @@
+https://github.com/ArchambaultP/COMP472-A1
 # COMP472 A1 README File
 
 Our project contains 8 files. 6 of which are the classes for the ML models. 
 The other two files are the main and outFile. 
 
-The outFile is used to create the csv?s with all the information requested in question 3. Namely, it prints the index and predictions, plots the confusion matrix, prints the precision, recall, and f1-measure for each class and  the accuracy, macro-average f1 and weighted-average f1 of the models.
+The outFile is used to create the csv with all the information requested in question 3. Namely, it prints the index and predictions, plots the confusion matrix, prints the precision, recall, and f1-measure for each class and  the accuracy, macro-average f1 and weighted-average f1 of the models.
 
 In the main we do several tasks:
 -extract all the data from either dataset 1 or 2: line 28 to 65
@@ -12,6 +13,7 @@ In the main we do several tasks:
 
 To run our program, all that is required is to run the main. 
 To choose between dataset 1 or 2 all that is needed is to change the dataset_index variable on line 26. Input 1 for DS1 and 2 for DS2. 
+To output a specific file for a model, uncomment the line right under the created model in the main method.
 
 ## Specifications for certain models:
 
